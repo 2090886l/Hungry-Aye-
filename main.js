@@ -1,5 +1,4 @@
 console.log("asda");
-console.log($("#test"));
 var baseURI = 'https://public.je-apis.com/';
 
 $(document).ready(function(){
@@ -11,8 +10,15 @@ $(document).ready(function(){
             }
     });
 
-	$( "#button" ).click(getRestaurants("G41 1BZ","Desserts"));
+    $("#search-button").click(function() {
+        var postCode = $("#postCode").val();
+        var cuisine = $("#cuisine").val();
+        var restaurant = $("#restaurant").is(':checked');
+        var takeAway = $("#takeAway").is(':checked');
+        alert(cuisine + ", " + postCode + ", " + restaurant + ", " + takeAway);
+    }); 
 });
+
     
 
     getRestaurants = function (postcode, cuisine) {
