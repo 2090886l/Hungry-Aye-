@@ -3,6 +3,7 @@ body {
   	-webkit-background-size: cover;
   	-moz-background-size: cover;
   	-o-background-size: cover;
+  	background-size: cover;
 }
 
 h1 {
@@ -32,16 +33,17 @@ h1 {
 	font-size: 125%;
 	color: white;
 	float:left;
-	margin-left: 8%;
+	margin-left: 6%;
 }
 
 #cuizine-dropdown select {
 	color:black;
 	height: 32px;
-	width: 100px;
+	width: 150px;
 }
 
 #query-results {
+	display: none;
 	border-width: 1px;
 	border-radius: 10px;
 	border-color: black;

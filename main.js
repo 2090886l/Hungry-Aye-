@@ -15,7 +15,10 @@ $(document).ready(function(){
         var cuisine = $("#cuisine").val();
         var restaurant = $("#restaurant").is(':checked');
         var takeAway = $("#takeAway").is(':checked');
-        alert(cuisine + ", " + postCode + ", " + restaurant + ", " + takeAway);
+        getRestaurants(postCode, cuisine);
+        $('#query-results').fadeIn(800);
+        $("h1").animate({"margin-top":"2%"}, 800);
+        $("#main-panel").animate({"margin-top":"2%"}, 800);
     }); 
 });
 
