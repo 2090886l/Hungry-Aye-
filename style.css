@@ -60,9 +60,13 @@ h1 {
 
 .info {
 	margin-top: 5%;
-	float: right;
 	width: 40%;
 	height: 40%;
+}
+
+.available-image {
+	width:6%;
+	height:6%;
 }
 
 #wrapper {
