@@ -13,12 +13,7 @@ $(document).ready(function(){
     $("#search-button").click(function() {
         var postCode = $("#postCode").val();
         var cuisine = $("#cuisine").val();
-        var restaurant = $("#restaurant").is(':checked');
-        var takeAway = $("#takeAway").is(':checked');
         getRestaurants(postCode, cuisine);
-
-
-        $('#query-results').fadeIn(800);
         $("h1").animate({"margin-top":"2%"}, 800);
         $("#main-panel").animate({"margin-top":"2%"}, 800);
     }); 
@@ -34,7 +29,7 @@ $(document).ready(function(){
                 c: cuisine,               
         },
             function (results) {
-                
+                $('#query-results').fadeOut(0);
                 //get array of resturant based on specific cuisine
                 var cuisineRestaurants=jQuery.grep(results.Restaurants, function (a){
                     for(i = 0; i<a.CuisineTypes.length; i++){
@@ -76,7 +71,7 @@ $(document).ready(function(){
                     $('#query-results').append('<div class="query-result">' +
                         '<img src="' +
                         resultsByCode[i].Logo[0].StandardResolutionURL +
-                        '"class="img-circle" width="20%" height="20%"></img>' +
+                        '"class="img-circle" id="rest-logo"></img>' +
                         '<ul class="list-group info">' +
                         '<li class="list-group-item">Name: ' +
                         resultsByCode[i].Name +
@@ -96,6 +91,7 @@ $(document).ready(function(){
                         '"</img>' +
                         '</ul>' +
                         '</div>');
+                $('#query-results').fadeIn(400);
                 }
             }
         );
