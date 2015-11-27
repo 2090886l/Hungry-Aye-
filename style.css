@@ -92,7 +92,7 @@ h1 {
 	position:fixed;
 	top:75px;
 	right:40px;
-	/*display:none;*/
+	display:none;
 	background: url('up.png') no-repeat 0px 20px;
 }
 .scrollToTop:hover{
