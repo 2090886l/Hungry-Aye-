@@ -44,12 +44,21 @@ $(document).ready(function(){
                     if(a1== b1) return 0;
                     return a1> b1? -1: 1;
                 });
-                
+                console.log(sortedRestaurants);
                 //select rests based on postcode
                 var resultsByCode = jQuery.grep(sortedRestaurants, function (a){
-                    return a.Postcode.indexOf(postcode.toUpperCase())> -1;
+                    //return a.Postcode.indexOf(postcode.toUpperCase())> -1;
+                    return a.IsCloseBy;
                 });
-                console.log(resultsByCode[1]);
+                
+                var resultsLeft = jQuery.grep(sortedRestaurants, function (a){
+                    //return a.Postcode.indexOf(postcode.toUpperCase())> -1;
+                    return !a.IsCloseBy;
+                });
+                
+                resultsByCode = jQuery.merge(resultsByCode, resultsLeft);
+                
+                console.log(resultsByCode);
                 $('#query-results').empty();
                 for (i = 0; i<resultsByCode.length; i++) {
                     if (resultsByCode[i].IsOpenNow) {
