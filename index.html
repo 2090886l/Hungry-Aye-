@@ -16,37 +16,36 @@
         
 		<div id="wrapper">
         <a href="#" class="scrollToTop">Scroll To Top</a>
-		<div class="panel panel-default" id="main-panel">
- 			<div class="panel-body" id="panel-container">
- 				<div class="panel-element">
- 					<div class="form-group">
-    					<input class="form-control" id="postCode" type="text" placeholder="Postcode">
-  					</div>
- 				</div>
- 				<div class="panel-element">
- 					<div class="panel panel-default" id="cuizine-dropdown">
- 						<select id="cuisine">
-	  					<option value="Indian">Indian</option>
-	    				<option value="Pizza">Pizza</option>
-	    				<option value="Chinese">Chinese</option>
-	  					<option value="Kebab">Kebab</option>
-	    				<option value="Italian">Italian</option>
-	    				<option value="Curry">Curry</option>
-	    			    <option value="Fish & Chips">Fish & Chips</option>
-	    				<option value="Chicken">Chicken</option>
-	    				<option value="Burgers">Burgers</option>
+        <div class="panel-body" id="panel-container">
+			<form class="form-inline" role="form">
+ 				<div class="form-group panel-element">
+    				<label for="postcode">Postcode:</label>
+    				<input type="postcode" class="form-control" id="postcode">
+  				</div>
+ 				<div class="form-group panel-element">
+ 						<select class="form-control" id="cuisine">
+		  					<option value="Indian">Indian</option>
+		    				<option value="Pizza">Pizza</option>
+		    				<option value="Chinese">Chinese</option>
+		  					<option value="Kebab">Kebab</option>
+		    				<option value="Italian">Italian</option>
+		    				<option value="Curry">Curry</option>
+		    			    <option value="Fish & Chips">Fish & Chips</option>
+		    				<option value="Chicken">Chicken</option>
+		    				<option value="Burgers">Burgers</option>
 	    				</select>
-	    			</div>
-				
  				</div>
- 				<div class="panel-element" id="search-button">
+ 				<div class="form-group panel-element" id="search-button">
  					<button type="button" class="btn btn-default">Search</button>
  				</div>
-			</div>
+ 			</form>
 		</div>
+		
 
 		<div class="panel panel-default" id="query-results" style="disabled">
+
  		</div>
  		</div>
 	</body>
 </html>
+

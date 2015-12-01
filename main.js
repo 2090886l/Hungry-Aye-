@@ -11,7 +11,7 @@ $(document).ready(function(){
     });
 
     $("#search-button").click(function() {
-        var postCode = $("#postCode").val();
+        var postCode = $("#postcode").val();
         var cuisine = $("#cuisine").val();
         getRestaurants(postCode, cuisine);
         $("h1").animate({"margin-top":"2%"}, 800);
@@ -77,10 +77,21 @@ $(document).ready(function(){
                         var halal = "closed.jpg";
                     }
 
-                    $('#query-results').append('<div class="query-result">' +
+                    $('#query-results').append('<div class="container">' +
+                        '<div class="row" >' +
+                        '<div class="col-md-2 col-lg-8">' +
+                        '<div class="query-result" >' +
+                        '<br>' +
                         '<img src="' +
                         resultsByCode[i].Logo[0].StandardResolutionURL +
                         '"class="img-circle" id="rest-logo"></img>' +
+                        '<div class="buttons">' +
+                        '<a href="#" class="btn btn-default link" role="button">More Information</a>' +
+                        '<a href="' +
+                        resultsByCode[i].Url +
+                        '" target="_blank" class="btn btn-default link" role="button">Restaurant Website</a>' +
+                        '</div>' +
+                        '<div class="info" >' +
                         '<ul class="list-group info">' +
                         '<li class="list-group-item">Name: ' +
                         resultsByCode[i].Name +
@@ -99,6 +110,10 @@ $(document).ready(function(){
                         halal +
                         '"</img>' +
                         '</ul>' +
+                        '</div>' +
+                        '<br>' +
+                        '</div>' +
+                        '</div>' +
                         '</div>');
                 $('#query-results').fadeIn(400);
                 }
