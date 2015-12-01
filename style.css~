@@ -20,7 +20,7 @@ h1 {
 	border-color: black;
     margin-top: 8%;
     margin-left: 10%;
-    background-color: rgba(250,0,0,0.7);
+    background-color: 
     width: 80%;
 }
 
@@ -30,7 +30,7 @@ h1 {
 	border-color: black;
     margin-top: 4%;
     margin-left: 10%;
-    background-color: rgba(250,0,0,0.7);
+    background-color: #FF0000;
     width: 80%;
     margin-bottom: 4%;
 }
