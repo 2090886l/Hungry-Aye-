@@ -97,18 +97,18 @@ $(document).ready(function(){
                         resultsByCode[i].Name +
                         '<li class="list-group-item">Address: ' +
                         resultsByCode[i].Address +
-                        '<li class="list-group-item">Open: ' +
-                        '<img class="available-image " src="' +
-                        open +
-                        '"</img>' +
-                        '<li class="list-group-item">Delivery now: ' +
-                        '<img class="available-image " src="' +
-                        delivery +
-                        '"</img>' +
-                        '<li class="list-group-item">Halal: ' +
-                        '<img class="available-image " src="' +
-                        halal +
-                        '"</img>' +
+                        // '<li class="list-group-item">Open: ' +
+                        // '<img class="available-image " src="' +
+                        // open +
+                        // '"</img>' +
+                        // '<li class="list-group-item">Delivery now: ' +
+                        // '<img class="available-image " src="' +
+                        // delivery +
+                        // '"</img>' +
+                        // '<li class="list-group-item">Halal: ' +
+                        // '<img class="available-image " src="' +
+                        // halal +
+                        // '"</img>' +
                         '</ul>' +
                         '</div>' +
                         '<br>' +
