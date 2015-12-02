@@ -17,6 +17,21 @@ $(document).ready(function(){
         $("h1").animate({"margin-top":"2%"}, 800);
         $("#main-panel").animate({"margin-top":"2%"}, 800);
     }); 
+    
+    
+    $(window).scroll(function(){
+		if ($(this).scrollTop() > 1000) {
+			$('#scrollToTop').fadeIn();
+		} else {
+			$('#scrollToTop').fadeOut();
+		}
+	});
+    
+    $("a[href='#top']").click(function() {
+        console.log("NATISKAM BUTONA");
+        $("html, body").animate({ scrollTop: 0 }, "slow");
+       // return false;
+    });
 
     $("input").keypress(function(event) {
         var postCode = $("#postcode").val();
