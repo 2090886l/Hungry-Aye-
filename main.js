@@ -17,6 +17,17 @@ $(document).ready(function(){
         $("h1").animate({"margin-top":"2%"}, 800);
         $("#main-panel").animate({"margin-top":"2%"}, 800);
     }); 
+
+    $("input").keypress(function(event) {
+        var postCode = $("#postcode").val();
+        var cuisine = $("#cuisine").val();
+        if (event.which == 13) {
+            event.preventDefault();
+            getRestaurants(postCode, cuisine);
+            $("h1").animate({"margin-top":"2%"}, 800);
+            $("#main-panel").animate({"margin-top":"2%"}, 800);
+        }
+});
 });
 
     
