@@ -1,5 +1,8 @@
-console.log("asda");
 var baseURI = 'https://public.je-apis.com/';
+var geocoder = new google.maps.Geocoder();
+var map;        
+
+
 
 $(document).ready(function(){
 
@@ -57,7 +60,6 @@ $(document).ready(function(){
                 });
                 
                 resultsByCode = jQuery.merge(resultsByCode, resultsLeft);
-                
                 console.log(resultsByCode);
                 $('#query-results').empty();
                 for (i = 0; i<resultsByCode.length; i++) {
@@ -82,11 +84,11 @@ $(document).ready(function(){
                         '<div class="col-md-2 col-lg-8">' +
                         '<div class="query-result" >' +
                         '<br>' +
+                        '<a href="#myModal" data-toggle="modal" onclick="doModal(event);">' +
                         '<img src="' +
                         resultsByCode[i].Logo[0].StandardResolutionURL +
-                        '"class="img-circle" id="rest-logo"></img>' +
+                        '"class="img-circle ' + resultsByCode[i].Name +'\" id="rest-logo-' + i + '\"></img></a>' +
                         '<div class="buttons">' +
-                        '<a href="#" class="btn btn-default link" role="button">More Information</a>' +
                         '<a href="' +
                         resultsByCode[i].Url +
                         '" target="_blank" class="btn btn-default link" role="button">Restaurant Website</a>' +
@@ -95,7 +97,7 @@ $(document).ready(function(){
                         '<ul class="list-group info">' +
                         '<li class="list-group-item">Name: ' +
                         resultsByCode[i].Name +
-                        '<li class="list-group-item">Address: ' +
+                        '<li class="list-group-item" id="rest-address-' + i + '\">Address: ' +
                         resultsByCode[i].Address +
                         // '<li class="list-group-item">Open: ' +
                         // '<img class="available-image " src="' +
@@ -120,3 +122,72 @@ $(document).ready(function(){
             }
         );
     };
+
+function doModal(event) {
+    last_char = event.target.id.substr(event.target.id.length - 1);
+    restaurant_id = "rest-address-" + last_char;
+    header = $(event.target).attr('class').replace("img-circle ",'');
+    src = $('#' + event.target.id).attr('src');
+   
+    restaurant_address = $('#' + restaurant_id).text().replace("Address: ",'');
+    address_long_lat = codeAddress(restaurant_address);
+    $('#modal-header').html(header);
+    $('#modal-body').attr('src',src);
+}
+
+
+function initialize() {
+  var mapProp = {
+      //center:myCenter,
+      zoom: 14,
+      //draggable: false,
+      scrollwheel: false,
+      mapTypeId:google.maps.MapTypeId.ROADMAP
+  };
+  
+  map=new google.maps.Map(document.getElementById("map-canvas"),mapProp);
+
+    
+  google.maps.event.addListener(marker, 'click', function() {
+      
+    infowindow.setContent(contentString);
+    infowindow.open(map, marker);
+    
+  }); 
+};
+google.maps.event.addDomListener(window, 'load', initialize);
+
+google.maps.event.addDomListener(window, "resize", resizingMap());
+$(document).ready(function() {
+  $('#myModal').on('show.bs.modal', function (e) {
+    resizeMap();
+  });
+});
+
+function resizeMap() {
+   if(typeof map =="undefined") return;
+   setTimeout( function(){resizingMap();} , 400);
+}
+
+function resizingMap() {
+   if(typeof map =="undefined") return;
+   var center = map.getCenter();
+   google.maps.event.trigger(map, "resize");
+   map.setCenter(center); 
+}
+
+function codeAddress(address) {
+
+    geocoder.geocode( { 'address': address}, function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+        //In this case it creates a marker, but you can get the lat and lng from the location.LatLng
+        map.setCenter(results[0].geometry.location);
+        var marker = new google.maps.Marker({
+            map: map, 
+            position: results[0].geometry.location
+        });
+      } else {
+        alert("Geocode was not successful for the following reason: " + status);
+      }
+    });
+  }
