@@ -2,7 +2,12 @@ var baseURI = 'https://public.je-apis.com/';
 var geocoder = new google.maps.Geocoder();
 var map;        
 var resultsByCode;
+//var geocoder = new google.maps.Geocoder;
 
+
+$(document).ready(function(){
+    var pos = getLocation();
+});
 
 $(document).ready(function(){
 
@@ -199,8 +204,8 @@ function initialize() {
   var mapProp = {
       //center:myCenter,
       zoom: 16,
-      //draggable: false,
-      scrollwheel: false,
+      draggable: true,
+      scrollwheel: true,
       mapTypeId:google.maps.MapTypeId.ROADMAP
   };
   
@@ -229,7 +234,6 @@ function resizingMap() {
 }
 
 function codeAddress(address) {
-
     geocoder.geocode( { 'address': address}, function(results, status) {
       if (status == google.maps.GeocoderStatus.OK) {
         //In this case it creates a marker, but you can get the lat and lng from the location.LatLng
@@ -243,3 +247,45 @@ function codeAddress(address) {
       }
     });
   }
+
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      pos = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      }; 
+      geocodeLatLng(geocoder, pos)
+      return pos;
+    }, function() {
+      handleLocationError(true, infoWindow, map.getCenter());
+    });
+  } else {
+    // Browser doesn't support Geolocation
+    handleLocationError(false, infoWindow, map.getCenter());
+  }
+
+}
+
+function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+  infoWindow.setPosition(pos);
+  infoWindow.setContent(browserHasGeolocation ?
+                        'Error: The Geolocation service failed.' :
+                        'Error: Your browser doesn\'t support geolocation.');
+}
+
+function geocodeLatLng(geocoder, pos) {
+  var latlng = {lat: parseFloat(pos.lat), lng: parseFloat(pos.lng)};
+  geocoder.geocode({'location': latlng}, function(results, status) {
+    if (status === google.maps.GeocoderStatus.OK) {
+      if (results[1]) {
+        var address = results[0].address_components;
+        $("#postcode").val(address[address.length - 1].long_name);
+      } else {
+        window.alert('No results found');
+      }
+    } else {
+      window.alert('Geocoder failed due to: ' + status);
+    }
+  });
+}
