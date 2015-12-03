@@ -224,7 +224,8 @@ function initialize() {
       //center:myCenter,
       zoom: 16,
       draggable: false,
-      scrollwheel: true,
+      scrollwheel: false,
+      disableDoubleClickZoom: true,
       mapTypeId:google.maps.MapTypeId.ROADMAP
   };
   
