@@ -177,7 +177,7 @@ function doModal(event) {
         var halal = "closed.jpg";
     }
 
-    $('.modal-body').append('<div class="info" >' +
+    $('.modal-info').html('<div class="info" >' +
     '<ul class="list-group info">' +
     '<li class="list-group-item">Open: ' +
     '<img class="available-image " src="' +
