@@ -117,7 +117,7 @@ h1 {
 	text-decoration: none;
 	position: fixed;
     display:none;
-	top:350px;
+	top:75%;
 	right:40px;
 	background: url('upp.png');
     background-size: 80px 60px;
