@@ -1,7 +1,7 @@
 var baseURI = 'https://public.je-apis.com/';
 var geocoder = new google.maps.Geocoder();
 var map;        
-
+var resultsByCode;
 
 
 $(document).ready(function(){
@@ -75,7 +75,7 @@ $(document).ready(function(){
                 });
                 console.log(sortedRestaurants);
                 //select rests based on postcode
-                var resultsByCode = jQuery.grep(sortedRestaurants, function (a){
+                resultsByCode = jQuery.grep(sortedRestaurants, function (a){
                     //return a.Postcode.indexOf(postcode.toUpperCase())> -1;
                     return a.IsCloseBy;
                 });
@@ -154,11 +154,45 @@ function doModal(event) {
     restaurant_id = "rest-address-" + last_char;
     header = $(event.target).attr('class').replace("img-circle ",'');
     src = $('#' + event.target.id).attr('src');
-   
+
     restaurant_address = $('#' + restaurant_id).text().replace("Address: ",'');
     address_long_lat = codeAddress(restaurant_address);
     $('#modal-header').html(header);
-    $('#modal-body').attr('src',src);
+    $('#modal-logo').attr('src',src);
+
+
+    if (resultsByCode[last_char].IsOpenNow) {
+        var open = "open.jpg";
+    } else {
+        var open = "closed.jpg";
+    }
+    if (resultsByCode[last_char].IsOpenNowForDelivery) {
+        var delivery = "open.jpg";
+    } else {
+        var delivery = "closed.jpg";
+    }
+    if (resultsByCode[last_char].IsHalal) {
+        var halal = "open.jpg";
+    } else {
+        var halal = "closed.jpg";
+    }
+
+    $('.modal-body').append('<div class="info" >' +
+    '<ul class="list-group info">' +
+    '<li class="list-group-item">Open: ' +
+    '<img class="available-image " src="' +
+    open +
+    '"</img>' +
+    '<li class="list-group-item">Delivery now: ' +
+    '<img class="available-image " src="' +
+    delivery +
+    '"</img>' +
+    '<li class="list-group-item">Halal: ' +
+    '<img class="available-image " src="' +
+    halal +
+    '"</img>' +
+    '</ul>' +
+    '</div>')
 }
 
 
