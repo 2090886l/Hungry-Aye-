@@ -118,21 +118,21 @@ $(document).ready(function(){
                         '<img src="' +
                         resultsByCode[i].Logo[0].StandardResolutionURL +
                         '"class="img-circle ' + resultsByCode[i].Name +'\" id="rest-logo-' + i + '\"></img></a>' +
-                        '<div class="buttons">' +
-                        '<a href="' +
-                        resultsByCode[i].Url +
-                        '" target="_blank" class="btn btn-default link" role="button">Restaurant Website</a>' +
-                        '</div>' +
+                        //'<div class="buttons">' +
+                        //'<a href="' +
+                        //resultsByCode[i].Url +
+                        //'" target="_blank" class="btn btn-default link" role="button">Restaurant Website</a>' +
+                        //'</div>' +
                         '<div class="info" >' +
                         '<ul class="list-group info">' +
                         '<li class="list-group-item">Name: ' +
                         resultsByCode[i].Name +
                         '<li class="list-group-item" id="rest-address-' + i + '\">Address: ' +
                         resultsByCode[i].Address +
-                        // '<li class="list-group-item">Open: ' +
-                        // '<img class="available-image " src="' +
-                        // open +
-                        // '"</img>' +
+                         '<li class="list-group-item">Open: ' +
+                         '<img class="available-image " src="' +
+                         open +
+                         '"</img>' +
                         // '<li class="list-group-item">Delivery now: ' +
                         // '<img class="available-image " src="' +
                         // delivery +
