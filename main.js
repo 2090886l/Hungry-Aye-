@@ -61,7 +61,7 @@ $(document).ready(function(){
                 q: postcode.replace(' ', ''),
                 c: cuisine,               
         },
-            function (results) {
+            function (results) {
                 $('#query-results').fadeOut(0);
                 //get array of resturant based on specific cuisine
                 var cuisineRestaurants=jQuery.grep(results.Restaurants, function (a){
@@ -152,8 +152,16 @@ $(document).ready(function(){
     };
 
 function doModal(event) {
+
+     
+
     last_char = event.target.id.substr(event.target.id.length - 1);
     restaurant_id = "rest-address-" + last_char;
+    
+    $.getJSON(baseURI + 'restaurants/' + resultsByCode[last_char].Id + "/details", 
+            function (results) {
+                console.log(results);
+   
     header = $(event.target).attr('class').replace("img-circle ",'');
     src = $('#' + event.target.id).attr('src');
 
@@ -180,6 +188,8 @@ function doModal(event) {
 
     $('.modal-info').html('<div class="list-info">' +
     '<ul class="list-group">' +
+    '<li class="list-group-item">Description: ' +
+     results.Description +
     '<li class="list-group-item">Open: ' +
     '<img class="available-image " src="' +
     open +
@@ -194,6 +204,8 @@ function doModal(event) {
     '"</img>' +
     '</ul>' +
     '</div>')
+             }
+    );
 }
 
 
