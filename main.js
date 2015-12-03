@@ -111,22 +111,24 @@ $(document).ready(function(){
                         var halal = "closed.jpg";
                     }
 
-                    $('#query-results').append('<div class="container">' +
+                    $('#query-results').append( 
+                        '<div class="container">' +
                         '<div class="row" >' +
                         '<div class="col-md-2 col-lg-8">' +
-                        '<div class="query-result" >' +
-                        '<br>' +
                         '<a href="#myModal" data-toggle="modal" onclick="doModal(event);">' +
+                        '<div class="query-result" id="query-result-' + i + '\" >' +
+                        '<br>' +
+                       
                         '<img src="' +
                         resultsByCode[i].Logo[0].StandardResolutionURL +
-                        '"class="img-circle ' + resultsByCode[i].Name +'\" id="rest-logo-' + i + '\"></img></a>' +
+                        '"class="img-circle ' + resultsByCode[i].Name +'\" id="rest-logo-' + i + '\"></img>' +
                         //'<div class="buttons">' +
                         //'<a href="' +
                         //resultsByCode[i].Url +
                         //'" target="_blank" class="btn btn-default link" role="button">Restaurant Website</a>' +
                         //'</div>' +
-                        '<div class="info" >' +
-                        '<ul class="list-group info">' +
+                        '<div id="query-info-'  + i + '\" class="info" >' +
+                        '<ul id="' + i + '\" class="list-group info">' +
                         '<li class="list-group-item">Name: ' +
                         resultsByCode[i].Name +
                         '<li class="list-group-item" id="rest-address-' + i + '\">Address: ' +
@@ -148,8 +150,10 @@ $(document).ready(function(){
                         '</div>' +
                         '<br>' +
                         '</div>' +
+                        '</a>' +
                         '</div>' +
-                        '</div>');
+                        '</div>' 
+                        );
                 $('#query-results').fadeIn(400);
                 }
             }
@@ -158,17 +162,15 @@ $(document).ready(function(){
 
 function doModal(event) {
 
-     
-
-    last_char = event.target.id.substr(event.target.id.length - 1);
-    restaurant_id = "rest-address-" + last_char;
     
+    var last_char = event.target.id.split("-")[2];
+    restaurant_id = "rest-address-" + last_char;
     $.getJSON(baseURI + 'restaurants/' + resultsByCode[last_char].Id + "/details", 
             function (results) {
                 console.log(results);
    
-    header = $(event.target).attr('class').replace("img-circle ",'');
-    src = $('#' + event.target.id).attr('src');
+    header = resultsByCode[last_char].Name;
+    src = resultsByCode[last_char].Logo[0].StandardResolutionURL;
 
     restaurant_address = $('#' + restaurant_id).text().replace("Address: ",'');
     address_long_lat = codeAddress(restaurant_address);
