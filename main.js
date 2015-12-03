@@ -223,12 +223,17 @@ function initialize() {
   var mapProp = {
       //center:myCenter,
       zoom: 16,
-      draggable: true,
+      draggable: false,
       scrollwheel: true,
       mapTypeId:google.maps.MapTypeId.ROADMAP
   };
   
   map=new google.maps.Map(document.getElementById("map-canvas"),mapProp);
+
+  map.addListener('click', function() {
+    var postcode = $("#postcode").val();
+    openInNewTab("https://www.google.co.uk/maps/dir/" + map.getCenter() + "/" + postcode);
+  });
 
 };
 google.maps.event.addDomListener(window, 'load', initialize);
@@ -308,6 +313,12 @@ function geocodeLatLng(geocoder, pos) {
     }
   });
 }
+
+function openInNewTab(url) {
+  var win = window.open(url, '_blank');
+  win.focus();
+}
+
 // =======
 // var baseURI = 'https://public.je-apis.com/';
 // var geocoder = new google.maps.Geocoder();
