@@ -130,7 +130,7 @@ $(document).ready(function(){
                         '<li class="list-group-item">Name: ' +
                         resultsByCode[i].Name +
                         '<li class="list-group-item" id="rest-address-' + i + '\">Address: ' +
-                        resultsByCode[i].Address +
+                        resultsByCode[i].Address + ", " + resultsByCode[i].Postcode + 
                         '<li class="list-group-item" id="rest-rating-' + '\">' +
                         '<div class="star-ratings-css">' +
                           '<div class="star-ratings-css-top" style="width: '+ resultsByCode[i].RatingStars/6*100 + '%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>' +
