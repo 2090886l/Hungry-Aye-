@@ -191,10 +191,15 @@ function doModal(event) {
         var halal = "closed.jpg";
     }
 
+    var description = results.Description;
+    if (description == ""){
+        description = "Come to our great restaurant to taste the most magical food you have ever tasted! Not only the food but our customer service are top notch. Hope to see you soon!";
+    }
+    
     $('.modal-info').html('<div class="list-info">' +
     '<ul class="list-group">' +
     '<li class="list-group-item">Description: ' +
-     results.Description +
+     description +
     '<li class="list-group-item">Open: ' +
     '<img class="available-image " src="' +
     open +
