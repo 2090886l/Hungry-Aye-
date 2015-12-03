@@ -99,21 +99,23 @@ h1 {
     width: 1340px;
 }
 
-.scrollToTop{
-	width:100px; 
-	height:130px;
+#scrollToTop{
+    opacity: 0.7;
+	width:80px; 
+	height:120px;
 	padding:10px; 
 	text-align:center; 
 	background: whiteSmoke;
 	font-weight: bold;
 	color: #444;
 	text-decoration: none;
-	position:fixed;
-	top:75px;
+	position: fixed;
+    display:none;
+	top:350px;
 	right:40px;
-	display:none;
-	background: url('up.png') no-repeat 0px 20px;
+	background: url('upp.png');
+    background-size: 80px 60px;
 }
-.scrollToTop:hover{
+#scrollToTop:hover{
 	text-decoration:none;
 }
