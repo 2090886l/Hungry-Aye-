@@ -129,10 +129,8 @@ $(document).ready(function(){
                         resultsByCode[i].Name +
                         '<li class="list-group-item" id="rest-address-' + i + '\">Address: ' +
                         resultsByCode[i].Address +
-                         '<li class="list-group-item">Open: ' +
-                         '<img class="available-image " src="' +
-                         open +
-                         '"</img>' +
+                         '<li class="list-group-item" id="rest-rating-' + i + '\">Rating: ' +
+                        resultsByCode[i].RatingStars +
                         // '<li class="list-group-item">Delivery now: ' +
                         // '<img class="available-image " src="' +
                         // delivery +

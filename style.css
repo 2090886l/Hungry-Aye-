@@ -87,10 +87,10 @@ h1 {
 
 .img-circle {
     float: left;
-
     padding: 10px;
     width:25%;
 	height:25%;
+    border-radius:20%;
 }
 
 .available-image {
