@@ -157,9 +157,8 @@ function doModal(event) {
 
     restaurant_address = $('#' + restaurant_id).text().replace("Address: ",'');
     address_long_lat = codeAddress(restaurant_address);
-    $('#modal-header').html(header);
+    $('#modal-title').html(header);
     $('#modal-logo').attr('src',src);
-
 
     if (resultsByCode[last_char].IsOpenNow) {
         var open = "open.jpg";
@@ -177,8 +176,8 @@ function doModal(event) {
         var halal = "closed.jpg";
     }
 
-    $('.modal-info').html('<div class="info" >' +
-    '<ul class="list-group info">' +
+    $('.modal-info').html('<div class="list-info">' +
+    '<ul class="list-group">' +
     '<li class="list-group-item">Open: ' +
     '<img class="available-image " src="' +
     open +
@@ -199,7 +198,7 @@ function doModal(event) {
 function initialize() {
   var mapProp = {
       //center:myCenter,
-      zoom: 14,
+      zoom: 16,
       //draggable: false,
       scrollwheel: false,
       mapTypeId:google.maps.MapTypeId.ROADMAP
@@ -207,13 +206,6 @@ function initialize() {
   
   map=new google.maps.Map(document.getElementById("map-canvas"),mapProp);
 
-    
-  google.maps.event.addListener(marker, 'click', function() {
-      
-    infowindow.setContent(contentString);
-    infowindow.open(map, marker);
-    
-  }); 
 };
 google.maps.event.addDomListener(window, 'load', initialize);
 

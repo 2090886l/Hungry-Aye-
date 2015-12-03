@@ -1,5 +1,6 @@
 body {
-    background: url("background.jpg") no-repeat center fixed; 
+    /*background: url("background.jpg") no-repeat center fixed;*/
+    background-color: #d9d9d9;
   	-webkit-background-size: cover;
   	-moz-background-size: cover;
   	-o-background-size: cover;
@@ -20,7 +21,8 @@ h1 {
 	border-color: black;
     margin-top: 8%;
     margin-left: 10%;
-    background-color: rgba(250,0,0,0.7);
+    background-color: rgba(206, 11, 16, 1.0);
+    opacity: :0.7;
     width: 80%;
 }
 
@@ -30,7 +32,7 @@ h1 {
 	border-color: black;
     margin-top: 4%;
     margin-left: 10%;
-    background-color: rgba(250,0,0,0.7);
+    background-color: rgba(206, 11, 16, 1.0);
     width: 80%;
     margin-bottom: 4%;
 }
@@ -76,7 +78,8 @@ h1 {
 .query-result {
 	border-radius: 20px;
 	text-align:center;
-	background-color: rgba(250,0,0,0.7);
+	opacity: :0.7;
+	background-color: rgba(206, 11, 16, 1.0);
     border:none;
     margin-bottom:5%;
 }
@@ -118,4 +121,45 @@ h1 {
 }
 #scrollToTop:hover{
 	text-decoration:none;
+}
+
+#map-canvas {
+	width: 200px; 
+	height: 160px;
+	margin-top: 10px;
+    padding: 10px;
+	float:right;
+	padding-right: 20px
+}
+
+#modal-logo {
+	float:left;
+	padding:0px;
+	border:1px solid #d9d9d9;
+}
+
+.list-info {
+	clear: left;
+	max-width:80%;
+	padding-top: 10px;
+	margin-left:1%;
+	margin-right:50%;
+}
+
+.modal-content {
+	background-color: #efefef !important;
+}
+
+.modal-section {
+	border-color: #333;
+}
+
+.modal-title {
+	font-size: 24px;
+	color: #333333;
+	font-family: Century Gothic, sans-serif;
+}
+
+.list-group-item {
+	background-color: #efefef;
 }
