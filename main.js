@@ -36,9 +36,8 @@ $(document).ready(function(){
 	});
     
     $("a[href='#top']").click(function() {
-        console.log("NATISKAM BUTONA");
         $("html, body").animate({ scrollTop: 0 }, "slow");
-       // return false;
+        return false;
     });
 
     $("input").keypress(function(event) {
